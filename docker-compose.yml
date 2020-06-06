@@ -1,0 +1,18 @@
+version: "2.2"
+services:
+  tronics:
+    container_name: tronicscorp
+    build: .
+    expose:
+      - "8080"
+    env_file:
+      - ./config/dev.env
+    depends_on:
+      - mongo
+    ports:
+      - "8080:8080"
+  mongo:
+    image: mongo
+    container_name: "tronics-db"
+    ports:
+      - "27017:27017"
